@@ -21,9 +21,9 @@ of your account and all your throwaways.
 
 ## Target Drawing
 
-If you run it as it is, is going to connect to this repository and try to draw
+If you run it as it is, is going to connect to the [placebot-argentina-target](https://github.com/Zequez/placebot-argentina-target) repository and try to draw
 the `official_target.bmp`. If you don't want to do that you can open `config.js` and
-set `autoupdateRemoteTarget: false`. This will make it use `target.bmp`
+set `autoupdateRemoteTarget: false`. This will make it use `target.bmp` instead. 
 
 Every time it's time to place a pixel the bot will download the board
 (and latest remote target) and find the first pixel that doesn't match
