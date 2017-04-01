@@ -1,8 +1,8 @@
 # Reddit Place Bot
 
-This is a bot I made for the Reddit /r/place event of 2017 April Fools Day.
+This is a bot I made for the Reddit [/r/place](https://www.reddit.com/r/place/) event of 2017 April Fools Day.
 
-I made this bot to protect our national flag on /r/argentina
+I made this bot to protect our national flag on [/r/argentina](https://www.reddit.com/r/argentina/)
 
 ## Installation
 
