@@ -72,6 +72,7 @@ function userRun (user) {
         }
         return userPaint(user, action.x, action.y, action.color)
       } else {
+        console.log('Nothing to do')
         return Promise.resolve(scheduleUser(user, 30))
       }
     })
@@ -141,8 +142,8 @@ function startQueue () {
 
   if (!ran) {
     if (nextOneIn <= 0) nextOneIn = 0
-    console.log(`Trying to run again in ${nextOneIn} seconds`)
-    setTimeout(startQueue, nextOneIn * 1000 + 1000)
+    console.log(`Next one in ${nextOneIn} seconds`)
+    setTimeout(startQueue, Math.min(30, nextOneIn) * 1000 + 1000)
   }
 }
 
