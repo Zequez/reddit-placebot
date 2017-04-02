@@ -1,9 +1,8 @@
 const bmp = require('bmp-js')
 const colors = require('./colors')
-const Jimp = require('jimp')
 
-// Takes the 2 buffers and returns a valid paint to make
-// the targetBuffer meet the requiremetns
+// Takes the 2 buffers and returns a list of
+// valid colors changes to make
 
 let HEIGHT = 1000
 let WIDTH = 1000
@@ -13,6 +12,7 @@ module.exports = function (rawBoardBuffer, rawTargetBuffer) {
   let targetBuffer = bmp.decode(rawTargetBuffer).data
   let boardBuffer = bmp.decode(rawBoardBuffer).data
 
+  let actions = []
   let len = targetBuffer.byteLength
   for (let i = 0; i < len-4; i += 4) {
     let val = targetBuffer.readUIntBE(i, 4)
@@ -23,16 +23,14 @@ module.exports = function (rawBoardBuffer, rawTargetBuffer) {
         let x = n % 1000
         let y = Math.floor(n / 1000)
         let color = colors.byInt.indexOf(val)
-        let rgb = Jimp.intToRGBA(val)
-
-        if (color == -1) {
-          console.error(`Skipping invalid color (${rgb.r}, ${rgb.g}, ${rgb.b}) at X: ${x} Y: ${y}`)
+        if (color === -1) {
+          console.warn(`WARNING: Unknown color #${val.toString(16)} at X: ${x} Y: ${y}`)
         } else {
-          return { x: x, y: y, color: color }
+          actions.push({ x: x, y: y, color: color })
         }
       }
     }
   }
 
-  return null
+  return actions
 }
