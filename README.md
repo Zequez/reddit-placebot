@@ -1,29 +1,30 @@
 # Reddit Place Bot
 
-This is a bot I made for the Reddit [/r/place](https://www.reddit.com/r/place/) event of 2017 April Fools Day.
+This is a bot I forked for the Reddit [/r/place](https://www.reddit.com/r/place/) event of 2017 April Fools Day.
 
-I made this bot to protect our national flag on [/r/argentina](https://www.reddit.com/r/argentina/)
-
-![This is how it looks now, but it might change when you read it, visit the placebot-argentina-target repo to see how it actually is right now](https://raw.githubusercontent.com/Zequez/reddit-placebot/master/current_target_that_might_not_be_updated.png)
+![This is how it looks now, but it might change when you read it, visit the placebot-argentina-target repo to see how it actually is right now](https://raw.githubusercontent.com/Lenni/reddit-place-target/master/target.bmp)
 
 ## Installation
 
 You need to have [NodeJS installed](https://nodejs.org)
 
 ```
-git clone https://github.com/zequez/reddit-place-bot
-cd reddit-place-bot
+sudo su //Only if you're not root already
+apt-get install npm
+curl -sL https://deb.nodesource.com/setup_7.x | bash 
+apt-get install nodejs
+git clone https://github.com/Lenni/reddit-placebot
+cd reddit-placebot
 npm install
 ```
 
 ## Configuration
 
-Change `users.example.json` to `users.json` and add your username and password
-of your account and all your throwaways.
+Download "users.json" from [Here](https://github.com/Lenni/reddit-placebot-target)
 
 ## Target Drawing
 
-If you run it as it is, is going to connect to the [placebot-argentina-target](https://github.com/Zequez/placebot-argentina-target) repository and try to draw
+If you run it as it is, is going to connect to the [reddit-placebot-target](https://github.com/Lenni/reddit-placebot-target) repository and try to draw
 the `official_target.bmp`. If you don't want to do that you can open `config.js` and
 set `autoupdateRemoteTarget: false`. This will make it use `target.bmp` instead. 
 
