@@ -1,3 +1,6 @@
+// add timestamps in front of log messages
+require('console-stamp')(console);
+
 const fs = require('fs')
 const qs = require('querystring')
 const axios = require('axios')
