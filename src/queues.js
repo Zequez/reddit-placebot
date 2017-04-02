@@ -21,38 +21,40 @@ function watch (usersNames, bundle, cb) {
       watch(usersNames, bundle, cb)
     })
   } else {
-    let nextOneIn = printCountdowns(usersNames)
+    let nextIn = getNext(usersNames)
     console.log(`${accounts.length}/${bundle} accounts until update`)
-    console.log(`Next account in ${nextOneIn} seconds`)
-    setTimeout(() => watch(usersNames, bundle, cb),
-      Math.min(10, nextOneIn) * 1000 + 1000)
+    setTimeout(() => watch(usersNames, bundle, cb), nextIn * 1000 + 1000)
   }
 }
 
 function getAvailableAccounts (usersNames) {
   let accounts = []
   usersNames.forEach((user) => {
-    if (queues[user] && queues[user] < new Date().valueOf()) {
+    if (!queues[user]) schedule(user)
+    if (queues[user] < new Date().valueOf()) {
       accounts.push(user)
     }
   })
   return accounts
 }
 
-function printCountdowns (usersNames) {
-  let countdowns = []
+function getNext (usersNames) {
   let timeNow = new Date().valueOf()
   let nextOne = Infinity
+  let countdowns = []
   usersNames.forEach((user) => {
-    if (queues[user]) {
-      let secs = (queues[user] - timeNow) / 1000
-      if (secs < nextOne && secs > 0) {
-        nextOne = secs
-      }
-      countdowns.push(`${user} ${Math.round(secs)}s`)
+    let secs = (queues[user] - timeNow) / 1000
+    if (secs < nextOne && secs > 0) {
+      nextOne = Math.round(secs)
     }
+    countdowns.push(`${user} ${secs}s`)
   })
+
+  let date = new Date(timeNow + nextOne * 1000)
+
   console.log(countdowns.join('; '))
+  console.log(`Next account in ${nextOne} seconds, at ${date.getHours()}:${date.getMinutes()}`)
+
   return nextOne
 }
 
