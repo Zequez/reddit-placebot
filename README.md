@@ -11,7 +11,7 @@ I made this bot to protect our national flag on [/r/argentina](https://www.reddi
 You need to have [NodeJS installed](https://nodejs.org)
 
 ```
-git clone https://github.com/zequez/reddit-place-bot
+git clone https://github.com/zequez/reddit-placebot
 cd reddit-place-bot
 npm install
 ```
