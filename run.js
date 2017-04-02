@@ -24,12 +24,12 @@ const queues = require('./queues')
 for (let user in users) { if (!queues[user]) scheduleUser(user) }
 startQueue()
 
-function authenticateAll () {
-  for (let user in users) {
+function authenticateAll (usersNames = Object.keys(users)) {
+  usersNames.forEach((user) => {
     if (!cookies[user]) {
       authenticateUser(user)
     }
-  }
+  })
 }
 
 function authenticateUser (user) {
@@ -60,21 +60,23 @@ function saveCookieJar () {
   })
 }
 
-function userRun (user) {
-  console.log('Running user ', user)
+function usersRun (users) {
+  console.log('Running users ', users)
 
   return Promise.all([boardDownloader.load(), targetDownloader.load()])
     .then((buffers) => {
-      let action = boardDiffer(buffers[0], buffers[1])
-      if (action) {
-        if (action.color === -1) {
-          throw `Invalid color at X: ${action.x} Y: ${action.y}`
+      let promises = []
+      let actions = boardDiffer(buffers[0], buffers[1])
+      users.forEach((user) => {
+        let action = actions.shift()
+        if (action) {
+          promises.push(userPaint(user, action.x, action.y, action.color))
+        } else {
+          console.log('Nothing to do')
+          scheduleUser(user, 30)
         }
-        return userPaint(user, action.x, action.y, action.color)
-      } else {
-        console.log('Nothing to do')
-        return Promise.resolve(scheduleUser(user, 30))
-      }
+      })
+      return Promise.all(promises)
     })
 }
 
@@ -129,22 +131,26 @@ function startQueue () {
   let nextOneIn = printCountdowns()
   authenticateAll()
 
-  let ran = false
-  for (let user in queues) {
-    if (queues[user] < new Date().valueOf()) {
-      ran = true
-      userRun(user).then(() => {
-        startQueue()
-      })
-      break
-    }
-  }
-
-  if (!ran) {
+  let availableAccounts = getAvailableAccounts()
+  if (availableAccounts.length) {
+    usersRun(availableAccounts.slice(0, config.bundleAccounts)).then(() => {
+      startQueue()
+    })
+  } else {
     if (nextOneIn <= 0) nextOneIn = 0
     console.log(`Next one in ${nextOneIn} seconds`)
-    setTimeout(startQueue, Math.min(30, nextOneIn) * 1000 + 1000)
+    setTimeout(startQueue, Math.min(10, nextOneIn) * 1000 + 1000)
   }
+}
+
+function getAvailableAccounts () {
+  let accounts = []
+  for (let user in queues) {
+    if (queues[user] < new Date().valueOf()) {
+      accounts.push(user)
+    }
+  }
+  return accounts
 }
 
 function printCountdowns () {
