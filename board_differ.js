@@ -1,5 +1,6 @@
 const bmp = require('bmp-js')
 const colors = require('./colors')
+const Jimp = require('jimp')
 
 // Takes the 2 buffers and returns a valid paint to make
 // the targetBuffer meet the requiremetns
@@ -22,7 +23,13 @@ module.exports = function (rawBoardBuffer, rawTargetBuffer) {
         let x = n % 1000
         let y = Math.floor(n / 1000)
         let color = colors.byInt.indexOf(val)
-        return { x: x, y: y, color: color }
+        let rgb = Jimp.intToRGBA(val)
+
+        if (color == -1) {
+          console.error(`Skipping invalid color (${rgb.r}, ${rgb.g}, ${rgb.b}) at X: ${x} Y: ${y}`)
+        } else {
+          return { x: x, y: y, color: color }
+        }
       }
     }
   }

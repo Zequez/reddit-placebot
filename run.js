@@ -6,6 +6,9 @@ const qs = require('querystring')
 const axios = require('axios')
 const Jimp = require('jimp')
 
+const bmp = require('bmp-js')
+const colors = require('./colors')
+
 if (!fs.existsSync('./cookies.json')) fs.writeFileSync('cookies.json', '{}')
 if (!fs.existsSync('./queues.json')) fs.writeFileSync('queues.json', '{}')
 
@@ -25,7 +28,15 @@ const queues = require('./queues')
 // return
 
 for (let user in users) { if (!queues[user]) scheduleUser(user) }
-startQueue()
+
+// The bot should fail to start when target has wrong pixels
+targetDownloader.load()
+  .then(verifyTarget)
+  .then(startQueue)
+  .catch((error) => {
+    console.log("Error: " + error)
+  })
+
 
 function authenticateAll () {
   for (let user in users) {
@@ -163,4 +174,28 @@ function printCountdowns () {
   }
   console.log(countdowns.join('; '))
   return nextOne
+}
+
+function verifyTarget (rawBuffer) {
+  let HEIGHT = 1000
+  let WIDTH = 1000
+  let TRANSPARENT = 0xff00ffff
+
+  let buffer = bmp.decode(rawBuffer).data
+  let len = buffer.byteLength
+
+  for (let i = 0; i < len-4; i += 4) {
+    let val = buffer.readUIntBE(i, 4)
+    if (val !== TRANSPARENT) {
+      let n = (i/4)
+      let x = n % 1000
+      let y = Math.floor(n / 1000)
+      let color = colors.byInt.indexOf(val)
+      let rgb = Jimp.intToRGBA(val)
+
+      if (color == -1) {
+        throw `Invalid color (${rgb.r}, ${rgb.g}, ${rgb.b}) at X: ${x} Y: ${y}`
+      }
+    }
+  }
 }
