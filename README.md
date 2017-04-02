@@ -4,7 +4,7 @@ This is a bot I made for the Reddit [/r/place](https://www.reddit.com/r/place/) 
 
 I made this bot to protect our national flag on [/r/argentina](https://www.reddit.com/r/argentina/)
 
-![This is how it looks now, but it might change when you read it, visit the placebot-argentina-target repo to see how it actually is right now](https://raw.githubusercontent.com/Zequez/reddit-placebot/master/current_target_that_might_not_be_updated.png)
+![This is how it looks now, but it might change when you read it, visit the placebot-argentina-target repo to see how it actually is right now](https://raw.githubusercontent.com/Zequez/reddit-placebot/master/preview.png)
 
 ## Installation
 
