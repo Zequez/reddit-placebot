@@ -13,6 +13,7 @@
   "dependencies": {
     "axios": "^0.15.3",
     "bmp-js": "^0.0.3",
+    "console-stamp": "^0.2.5",
     "got": "^6.7.1",
     "jimp": "^0.2.27",
     "nodemon": "^1.11.0",
