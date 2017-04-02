@@ -5,7 +5,7 @@ module.exports = {
   BOARD_URL: 'https://www.reddit.com/api/place/board-bitmap',
   DRAW_URL: 'https://www.reddit.com/api/place/draw.json',
 
-  REMOTE_TARGET_URL: 'https://raw.githubusercontent.com/Lenni/reddit-place-target/master/official_target.bmp',
+  REMOTE_TARGET_URL: 'https://raw.githubusercontent.com/Zequez/reddit-placebot/master/current_target_that_might_not_be_updated.png',
 
   BOARD_H: 1000,
   BOARD_W: 1000,
