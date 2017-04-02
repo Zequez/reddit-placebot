@@ -33,9 +33,7 @@ the target, and fill it with the correct color.
 
 ## About Colors
 
-Since I honestly couldn't figure out how to make transparent BMP files I just
-set it so that the color `#ff00ff` is considered transparent. Anything transparent
-will be ignored.
+Since '.BMP' files do not support transparent pixels, the color `#ff00ff` is used to denote transparent pixels.  These will be ignored by the placebot.
 
 You have to use the exact same colors as the board or the app is gonna throw
 an error, it's not smart enough to guess the colors based on similarity.
