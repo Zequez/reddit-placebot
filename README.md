@@ -12,7 +12,7 @@ You need to have [NodeJS installed](https://nodejs.org)
 
 ```
 git clone https://github.com/zequez/reddit-placebot
-cd reddit-place-bot
+cd reddit-placebot
 npm install
 ```
 
@@ -23,13 +23,22 @@ of your account and all your throwaways.
 
 ## Target Drawing
 
-If you run it as it is, is going to connect to the [placebot-argentina-target](https://github.com/Zequez/placebot-argentina-target) repository and try to draw
-the `official_target.bmp`. If you don't want to do that you can open `config.js` and
-set `autoupdateRemoteTarget: false`. This will make it use `target.bmp` instead.
+The bot downloads the board each time it's time to draw, so it only changes
+the necessary pixels that don't match the target.
 
-Every time it's time to place a pixel the bot will download the board
-(and latest remote target) and find the first pixel that doesn't match
-the target, and fill it with the correct color.
+### Remote (for multiple people)
+
+You can configure the target to be downloaded from a remote image by
+settin on `config.js`:
+
+- `autoupdateRemoteTarget: true`
+- `REMOTE_TARGET_URL: "http://example.com/remote_target.bmp"`
+
+The image will be downloaded before paining and saved to `target.bmp`.
+
+### Local (just for your own bots)
+
+Just use the file `target.bmp` and set `autoupdateRemoteTarget: false` on `config.js`.
 
 ## About Colors
 
