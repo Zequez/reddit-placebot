@@ -2,7 +2,7 @@
 
 This is a bot I forked for the Reddit [/r/place](https://www.reddit.com/r/place/) event of 2017 April Fools Day.
 
-![This is how it looks now, but it might change when you read it, visit the placebot-argentina-target repo to see how it actually is right now](https://raw.githubusercontent.com/Lenni/reddit-place-target/master/target.bmp)
+![This is how it looks now, but it might change when you read it, visit the placebot-argentina-target repo to see how it actually is right now](https://raw.githubusercontent.com/Zequez/reddit-placebot/master/current_target_that_might_not_be_updated.png)
 
 ## Installation
 
@@ -20,7 +20,8 @@ npm install
 
 ## Configuration
 
-Download "users.json" from [Here](https://github.com/Lenni/reddit-place-target)
+Change `users.example.json` to `users.json` and add your username and password
+of your account and all your throwaways.
 
 ## Target Drawing
 
