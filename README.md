@@ -1,6 +1,8 @@
 # Reddit Place Bot
 
-This is a bot I forked for the Reddit [/r/place](https://www.reddit.com/r/place/) event of 2017 April Fools Day.
+This is a bot I made for the Reddit [/r/place](https://www.reddit.com/r/place/) event of 2017 April Fools Day.
+
+I made this bot to protect our national flag on [/r/argentina](https://www.reddit.com/r/argentina/)
 
 ![This is how it looks now, but it might change when you read it, visit the placebot-argentina-target repo to see how it actually is right now](https://raw.githubusercontent.com/Zequez/reddit-placebot/master/current_target_that_might_not_be_updated.png)
 
@@ -25,7 +27,7 @@ of your account and all your throwaways.
 
 ## Target Drawing
 
-If you run it as it is, is going to connect to the [reddit-placebot-target](https://github.com/Lenni/reddit-place-target) repository and try to draw
+If you run it as it is, is going to connect to the [placebot-argentina-target](https://github.com/Zequez/placebot-argentina-target) repository and try to draw
 the `official_target.bmp`. If you don't want to do that you can open `config.js` and
 set `autoupdateRemoteTarget: false`. This will make it use `target.bmp` instead. 
 
