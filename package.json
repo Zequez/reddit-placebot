@@ -4,14 +4,15 @@
   "description": "A bot that automatically places stuff on Reddit/r/place",
   "main": "index.js",
   "scripts": {
-    "start": "node run.js",
-    "watch": "nodemon ./run.js -i queues.json -i cookies.json",
+    "start": "node src/run.js",
+    "watch": "nodemon ./src/run.js -i queues.json -i cookies.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
     "axios": "^0.15.3",
+    "bluebird": "^3.5.0",
     "bmp-js": "^0.0.3",
     "got": "^6.7.1",
     "jimp": "^0.2.27",

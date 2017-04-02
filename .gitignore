@@ -57,10 +57,6 @@ typings/
 # dotenv environment variables file
 .env
 
+/tmp/*
 
-_board.bmp
-board.bmp
-target.bmp
 users.json
-queues.json
-cookies.json
