@@ -21,6 +21,24 @@ npm install
 Change `users.example.json` to `users.json` and add your username and password
 of your account and all your throwaways.
 
+## The target.bmp file
+
+The target file must meet the following requirements:
+
+  - Format: BMP
+  - Dimensions: 1000x1000
+  - Compression: NONE! Should weight about 3mb, 4 bytes per color
+  - Colors: exactly the same colors used in the board
+  - Transparency: Color `#ff00ffff` is considered transparent (a bright purple color), and will be ignored by the bots
+
+You can check the colors on `colors.js`, but is easier to
+import `board.example.bmp` to your image editor, and use the eyedropper tool
+from there. You can use that image as a template and go from there too, covering
+parts that you don't use in `#ff00ffff`
+
+With an advanced image editor is recommended to have the board in a separate
+layer so you actually know what you're modifying.
+
 ## Target Drawing
 
 The bot downloads the board each time it's time to draw, so it only changes
@@ -39,13 +57,6 @@ The image will be downloaded before paining and saved to `target.bmp`.
 ### Local (just for your own bots)
 
 Just use the file `target.bmp` and set `autoupdateRemoteTarget: false` on `config.js`.
-
-## About Colors
-
-Since '.BMP' files do not support transparent pixels, the color `#ff00ffff` (yes the transparency channel too) is used to denote transparent pixels. These will be ignored by the Placebot.
-
-You have to use the exact same colors as the board or the app is gonna throw
-an error, it's not smart enough to guess the colors based on similarity.
 
 ## Usage
 
