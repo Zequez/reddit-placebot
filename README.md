@@ -25,7 +25,7 @@ of your account and all your throwaways.
 
 If you run it as it is, is going to connect to the [placebot-argentina-target](https://github.com/Zequez/placebot-argentina-target) repository and try to draw
 the `official_target.bmp`. If you don't want to do that you can open `config.js` and
-set `autoupdateRemoteTarget: false`. This will make it use `target.bmp` instead. 
+set `autoupdateRemoteTarget: false`. This will make it use `target.bmp` instead.
 
 Every time it's time to place a pixel the bot will download the board
 (and latest remote target) and find the first pixel that doesn't match
@@ -33,7 +33,7 @@ the target, and fill it with the correct color.
 
 ## About Colors
 
-Since '.BMP' files do not support transparent pixels, the color `#ff00ff` is used to denote transparent pixels.  These will be ignored by the placebot.
+Since '.BMP' files do not support transparent pixels, the color `#ff00ffff` (yes the transparency channel too) is used to denote transparent pixels. These will be ignored by the Placebot.
 
 You have to use the exact same colors as the board or the app is gonna throw
 an error, it's not smart enough to guess the colors based on similarity.
