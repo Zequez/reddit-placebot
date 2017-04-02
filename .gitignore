@@ -57,6 +57,8 @@ typings/
 # dotenv environment variables file
 .env
 
+
 /tmp/*
+!/tmp/.keep
 
 users.json
