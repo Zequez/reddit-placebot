@@ -16,5 +16,5 @@ module.exports = {
 
   // Wait until these amount of accounts are available
   // and paint pixels at the same time
-  bundleAccounts: 1
+  bundleAccounts: 8
 }

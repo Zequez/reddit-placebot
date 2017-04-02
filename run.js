@@ -61,7 +61,7 @@ function saveCookieJar () {
 }
 
 function usersRun (users) {
-  console.log('Running users ', users)
+  console.log('Running users ', users.join(', '))
 
   return Promise.all([boardDownloader.load(), targetDownloader.load()])
     .then((buffers) => {
@@ -85,9 +85,9 @@ function userPaint (user, x, y, color) {
 
   console.log('Painting ', {x: x, y: y, color: color})
 
-  // console.log('Mock painting!')
-  // scheduleUser(user, 30)
-  // return Promise.resolve()
+  console.log('Mock painting!')
+  scheduleUser(user, 30)
+  return Promise.resolve()
 
   return axios({
     method: 'POST',
@@ -124,7 +124,6 @@ function scheduleUser (user, seconds = -1) {
 
 function saveQueue () {
   fs.writeFileSync('queues.json', JSON.stringify(queues, null, '\t'))
-  console.log('Queue saved!')
 }
 
 function startQueue () {
@@ -132,13 +131,13 @@ function startQueue () {
   authenticateAll()
 
   let availableAccounts = getAvailableAccounts()
-  if (availableAccounts.length) {
+  if (availableAccounts.length >= config.bundleAccounts) {
     usersRun(availableAccounts.slice(0, config.bundleAccounts)).then(() => {
       startQueue()
     })
   } else {
-    if (nextOneIn <= 0) nextOneIn = 0
-    console.log(`Next one in ${nextOneIn} seconds`)
+    console.log(`${availableAccounts.length + 1}/${config.bundleAccounts} accounts until update`)
+    console.log(`Next account in ${nextOneIn} seconds`)
     setTimeout(startQueue, Math.min(10, nextOneIn) * 1000 + 1000)
   }
 }
@@ -159,7 +158,7 @@ function printCountdowns () {
   let nextOne = Infinity
   for (let user in queues) {
     let secs = (queues[user] - timeNow) / 1000
-    if (secs < nextOne) {
+    if (secs < nextOne && secs > 0) {
       nextOne = secs
     }
     countdowns.push(`${user} ${Math.round(secs)}s`)
