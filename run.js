@@ -29,14 +29,9 @@ const queues = require('./queues')
 
 for (let user in users) { if (!queues[user]) scheduleUser(user) }
 
-// The bot should fail to start when target has wrong pixels
 targetDownloader.load()
   .then(verifyTarget)
   .then(startQueue)
-  .catch((error) => {
-    console.log("Error: " + error)
-  })
-
 
 function authenticateAll () {
   for (let user in users) {
@@ -194,7 +189,7 @@ function verifyTarget (rawBuffer) {
       let rgb = Jimp.intToRGBA(val)
 
       if (color == -1) {
-        throw `Invalid color (${rgb.r}, ${rgb.g}, ${rgb.b}) at X: ${x} Y: ${y}`
+        console.log(`Invalid color (${rgb.r}, ${rgb.g}, ${rgb.b}) at X: ${x} Y: ${y}`)
       }
     }
   }
