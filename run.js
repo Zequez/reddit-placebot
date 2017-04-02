@@ -181,12 +181,13 @@ function verifyTarget (rawBuffer) {
 
   for (let i = 0; i < len-4; i += 4) {
     let val = buffer.readUIntBE(i, 4)
-    if (val !== TRANSPARENT) {
+    let color = colors.byInt.indexOf(val)
+    let rgb = Jimp.intToRGBA(val)
+    // transparent
+    if (!(rgb.r == 255 && rgb.g == 0 && rgb.b == 255)) {
       let n = (i/4)
       let x = n % 1000
       let y = Math.floor(n / 1000)
-      let color = colors.byInt.indexOf(val)
-      let rgb = Jimp.intToRGBA(val)
 
       if (color == -1) {
         console.log(`Invalid color (${rgb.r}, ${rgb.g}, ${rgb.b}) at X: ${x} Y: ${y}`)
