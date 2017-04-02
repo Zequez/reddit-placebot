@@ -20,11 +20,11 @@ npm install
 
 ## Configuration
 
-Download "users.json" from [Here](https://github.com/Lenni/reddit-placebot-target)
+Download "users.json" from [Here](https://github.com/Lenni/reddit-place-target)
 
 ## Target Drawing
 
-If you run it as it is, is going to connect to the [reddit-placebot-target](https://github.com/Lenni/reddit-placebot-target) repository and try to draw
+If you run it as it is, is going to connect to the [reddit-placebot-target](https://github.com/Lenni/reddit-place-target) repository and try to draw
 the `official_target.bmp`. If you don't want to do that you can open `config.js` and
 set `autoupdateRemoteTarget: false`. This will make it use `target.bmp` instead. 
 
