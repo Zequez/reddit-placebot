@@ -59,6 +59,5 @@ typings/
 
 
 /tmp/*
-!/tmp/.keep
 
 users.json

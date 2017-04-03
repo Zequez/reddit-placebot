@@ -2,9 +2,9 @@ global.Promise = require('bluebird')
 const fs = require('fs')
 const qs = require('querystring')
 const axios = require('axios')
-const Jimp = require('jimp')
 
-if (!fs.existsSync('./queues.json')) fs.writeFileSync('queues.json', '{}')
+const TMPDIR = __dirname + '/../tmp'
+if (!fs.existsSync(TMPDIR)) fs.mkdirSync(TMPDIR)
 
 const config = require('../config')
 const users = require('../users')
