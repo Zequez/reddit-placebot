@@ -29,8 +29,8 @@ function findDifference (boardImg, targetImg)  {
   let boardH = boardImg.bitmap.height
   let W = targetImg.bitmap.width
   let H = targetImg.bitmap.height
-  for (let x = 0; x < W; ++x) {
-    for (let y = 0; y < H; ++y) {
+  for (let y = 0; y < H; ++y) {
+    for (let x = 0; x < W; ++x) {
       let targetPx = targetImg.getPixelColor(x, y)
       if (!colors.isTransparent(targetPx)) {
         let boardX = config.targetStartX + x

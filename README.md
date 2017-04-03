@@ -106,7 +106,7 @@ changes all at the same time, change the config:
 ### Drawing Mode
 
 - `drawMode: <mode> (default = 'RANDOM')`
-  - `'TOPLEFT'`: Will draw from top to bottom and left to right
+  - `'LEFTTOP'`: Will draw from left to right and top to bottom
   - `'RANDOM'`: Will draw at random points
 
 ## Testing
