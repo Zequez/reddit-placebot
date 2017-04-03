@@ -21,23 +21,23 @@ npm install
 Change `users.example.json` to `users.json` and add your username and password
 of your account and all your throwaways.
 
-## The target.bmp file
+## The Target Image File
 
-The target file must meet the following requirements:
+It can be a PNG, JPG or BMP file of any size or compression.
 
-  - Format: BMP
-  - Dimensions: 1000x1000
-  - Compression: NONE! Should weight about 3mb, 4 bytes per color
-  - Colors: exactly the same colors used in the board
-  - Transparency: Color `#ff00ffff` is considered transparent (a bright purple color), and will be ignored by the bots
+To change the position of the board you want to paint the target in:
 
-You can check the colors on `colors.js`, but is easier to
-import `board.example.bmp` to your image editor, and use the eyedropper tool
-from there. You can use that image as a template and go from there too, covering
-parts that you don't use in `#ff00ffff`
+- `targetStartX*: 0-999`
+- `targetStartY*: 0-999`
 
-With an advanced image editor is recommended to have the board in a separate
-layer so you actually know what you're modifying.
+Transparent pixels are just transparent pixels in PNG, or #ff00ff (for legacy reasons)
+and will be ignored by the bot.
+
+### Colors
+
+You can use any colors and will try to find the closest match. The available
+board colors are visible in the file /src/colors.js. But it's better if you use
+and eyedropper tool from a board image.
 
 ## Target Drawing
 
@@ -49,21 +49,22 @@ the necessary pixels that don't match the target.
 You can configure the target to be downloaded from a remote image by
 settin on `config.js`:
 
-- `autoupdateRemoteTarget: true`
+- `useRemoteTarget: true`
 - `REMOTE_TARGET_URL: "http://example.com/remote_target.bmp"`
 
-The image will be downloaded before paining and saved to `target.bmp`.
+The image will be downloaded before paining and saved to `images/remote_target`.
 
 ### Local (just for your own bots)
 
-Just use the file `target.bmp` and set `autoupdateRemoteTarget: false` on `config.js`.
+- `useRemoteTarget: false`
+- `LOCAL_TARGET_FILE: __dirname + '/images/target.png'`
 
 ## Bundle up changes
 
 If you want to wait until multiple users are available to paint and do the
 changes all at the same time, change the config:
 
-- *bundleAccounts*: <Number 1-Infinity>
+- `bundleAccounts: <Number 1-Infinity> (default = 8)`
 
 ## Usage
 
@@ -72,7 +73,7 @@ changes all at the same time, change the config:
 ```
 
 It'll keep keep drawing forever and if it can't draw anymore it's gonna
-wait until something breaks and fix it.
+wait until something breaks it and fix it.
 
 ## Testing
 
@@ -82,9 +83,15 @@ My initial intention was to make a simple script, didn't expect it to last, so
 testing manually was feasible. Now I should be writing tests, because it's getting
 tedious, but I don't know how long will /r/place last for.
 
-## Similar Projects
+## Other Projects
 
 Thanks to [trosh/rplace](https://github.com/trosh/rplace) to figure out how to actually read the bitmap from the server. I just ported that to Node.
+
+Thanks [oliver-moran/jimp](https://github.com/oliver-moran/jimp) for a Node image processing library
+without any kind of binary dependencies.
+
+Thanks [dtao/nearest-color](https://github.com/dtao/nearest-color) for the nearest
+color matching.
 
 ## License
 

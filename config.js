@@ -13,7 +13,7 @@ module.exports = {
 
   // Use the REMOTE_TARGET_URL file as target, otherwise it's gonna just
   // try to read from target.bmp
-  useRemoteTarget: true,
+  useRemoteTarget: false,
 
   // Wait until these amount of accounts are available
   // and paint pixels at the same time
