@@ -1,10 +1,14 @@
 # Reddit Placebot
 
-This is a bot I made for the Reddit [/r/place](https://www.reddit.com/r/place/) event of 2017 April Fools Day.
+> Anything that can be automated will be automated
 
-I made this bot to protect our national flag on [/r/argentina](https://www.reddit.com/r/argentina/)
+This is a bot I made for the Reddit [/r/place](https://www.reddit.com/r/place/) event of 2017 April Fools Day. I just wanted to make a simple quick script because I expected it to last until April 2nd. It seems the Placebot will be useful for a little more time.
 
-![This is how it looks now, but it might change when you read it, visit the placebot-argentina-target repo to see how it actually is right now](https://raw.githubusercontent.com/Zequez/reddit-placebot/master/images/preview.png)
+Originally made this bot to protect our national flag on [/r/argentina](https://www.reddit.com/r/argentina/). But you can use it
+for your artwork or evil deeds, with your own account, your other 4 throwaways, or
+the 1000 accounts dump you found on Pastebin. The Placebot is impartial and doesn't discriminate.
+
+![Some artwork  from our sub](https://raw.githubusercontent.com/Zequez/reddit-placebot/master/images/preview.png)
 
 ## Non-tech install
 
