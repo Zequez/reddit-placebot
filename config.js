@@ -4,8 +4,8 @@ module.exports = {
   BOARD_H: 1000,
   BOARD_W: 1000,
 
-  REMOTE_TARGET_URL: 'https://raw.githubusercontent.com/Zequez/placebot-argentina-target/master/official_target.bmp',
-  REMOTE_TARGET_FILE: __dirname + '/tmp/target.bmp',
+  REMOTE_TARGET_URL: 'https://raw.githubusercontent.com/Zequez/placebot-argentina-target/master/official_target.png',
+  REMOTE_TARGET_FILE: __dirname + '/tmp/remote_target',
 
   LOCAL_TARGET_FILE: __dirname + '/images/target.png',
 
@@ -13,11 +13,15 @@ module.exports = {
 
   // Use the REMOTE_TARGET_URL file as target, otherwise it's gonna just
   // try to read from target.bmp
-  autoupdateRemoteTarget: true,
+  useRemoteTarget: true,
 
   // Wait until these amount of accounts are available
   // and paint pixels at the same time
-  bundleAccounts: 4,
+  bundleAccounts: 8,
+
+  // The PLACEBOT mark in the world <3
+  targetStartX: 929,
+  targetStartY: 991,
 
 
   // Testing configuration things

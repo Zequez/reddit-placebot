@@ -4,7 +4,7 @@ const axios = require('axios')
 const config = require('../config')
 
 function load () {
-  if (config.autoupdateRemoteTarget) {
+  if (config.useRemoteTarget) {
     return fromUrl(config.REMOTE_TARGET_URL)
   } else {
     return fromFile(config.LOCAL_TARGET_FILE)
