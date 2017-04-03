@@ -23,6 +23,8 @@ module.exports = function (rawBoardBuffer, rawTargetBuffer) {
 
 function findDifference (boardImg, targetImg)  {
   let actions = []
+  let boardW = boardImg.bitmap.width
+  let boardH = boardImg.bitmap.height
   let W = targetImg.bitmap.width
   let H = targetImg.bitmap.height
   for (let x = 0; x < W; ++x) {
@@ -31,7 +33,8 @@ function findDifference (boardImg, targetImg)  {
       if (!colors.isTransparent(targetPx)) {
         let boardX = config.targetStartX + x
         let boardY = config.targetStartY + y
-        if (boardX >= W || boardY >= H) throw `Out of bounds: X: ${boardX} Y: ${boardY}`
+        if (boardX >= boardW || boardY >= boardH)
+          throw `Out of bounds: X: ${boardX} Y: ${boardY}`
         let boardPx = boardImg.getPixelColor(boardX, boardY)
         let closestPx = colors.closest(targetPx)
         if (boardPx !== closestPx) {
