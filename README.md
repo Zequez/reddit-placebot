@@ -6,6 +6,21 @@ I made this bot to protect our national flag on [/r/argentina](https://www.reddi
 
 ![This is how it looks now, but it might change when you read it, visit the placebot-argentina-target repo to see how it actually is right now](https://raw.githubusercontent.com/Zequez/reddit-placebot/master/images/preview.png)
 
+## Non-tech install
+
+These are the step-by step instructions for non-tech people:
+
+- Go to [nodejs.org](https://nodejs.org/) and download and install the latest version
+- On this page, click the green *Clone or download* button and then on *Download ZIP*
+- Uncompress the downloaded zip file
+- Go to the uncompressed folder
+- Rename the *users.example.json* to *users.json* and open it up to put your Reddit user names and passwords in the same format the examples (and erase the examples)
+- Run one time: *install.bat* (Windows) or *install.sh* (Linux or Mac) and wait until it finishes
+- Run every time you want to use it: *start.bat* (Windows) or *start.sh* (Linux or Mac)
+- Configure stuff if you need to on *config.json*, or open the start scripts and add command line arguments there
+
+Para la imagen oficial de Argentina usen *start_argentina.bat* o *start_argentina.sh*
+
 ## Installation
 
 You need to have [NodeJS installed](https://nodejs.org)
