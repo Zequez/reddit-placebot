@@ -18,10 +18,10 @@ module.exports = {
   bundleAccounts: 10,
 
   // The PLACEBOT mark in the world <3
-  targetStartX: 930,
-  targetStartY: 966,
+  targetStartX: 981,
+  targetStartY: 784,
 
-  drawMode: 'RANDOM', // TOPLEFT | RANDOM
+  drawMode: 'RANDOM', // LEFTTOP | RANDOM
 
   // Testing configuration things
 
