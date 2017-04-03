@@ -1,6 +1,6 @@
 # Reddit Placebot
 
-> Anything that can be automated will be automated
+> Anything that can be automated should be automated
 
 This is a bot I made for the Reddit [/r/place](https://www.reddit.com/r/place/) event of 2017 April Fools Day. I just wanted to make a simple quick script because I expected it to last until April 2nd. It seems the Placebot will be useful for a little more time.
 
