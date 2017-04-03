@@ -18,48 +18,50 @@ npm install
 
 ## Configuration
 
+### Users
+
 Change `users.example.json` to `users.json` and add your username and password
 of your account and all your throwaways.
 
-## The Target Image File
+### The Target Image File
 
 It can be a PNG, JPG or BMP file of any size or compression.
 
 To change the position of the board you want to paint the target in:
 
-- `targetStartX*: 0-999`
-- `targetStartY*: 0-999`
+- `targetStartX: 0-999`
+- `targetStartY: 0-999`
 
 Transparent pixels are just transparent pixels in PNG, or #ff00ff (for legacy reasons)
 and will be ignored by the bot.
 
-### Colors
+#### Colors
 
 You can use any colors and will try to find the closest match. The available
 board colors are visible in the file /src/colors.js. But it's better if you use
 and eyedropper tool from a board image.
 
-## Target Drawing
+### Target Drawing
 
 The bot downloads the board each time it's time to draw, so it only changes
 the necessary pixels that don't match the target.
 
-### Remote (for multiple people)
+#### Remote (for multiple people)
 
 You can configure the target to be downloaded from a remote image by
 settin on `config.js`:
 
 - `useRemoteTarget: true`
-- `REMOTE_TARGET_URL: "http://example.com/remote_target.bmp"`
+- `REMOTE_TARGET_URL: "http://example.com/remote_target.png"`
 
 The image will be downloaded before paining and saved to `images/remote_target`.
 
-### Local (just for your own bots)
+#### Local (just for your own bots)
 
 - `useRemoteTarget: false`
 - `LOCAL_TARGET_FILE: __dirname + '/images/target.png'`
 
-## Bundle up changes
+### Bundle up changes
 
 If you want to wait until multiple users are available to paint and do the
 changes all at the same time, change the config:
