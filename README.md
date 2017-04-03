@@ -69,6 +69,12 @@ changes all at the same time, change the config:
 
 - `bundleAccounts: <Number 1-Infinity> (default = 8)`
 
+### Drawing Mode
+
+- `drawMode: <mode> (default = 'RANDOM')`
+  - `'TOPLEFT'`: Will draw from top to bottom and left to right
+  - `'RANDOM'`: Will draw at random points
+
 ## Usage
 
 ```

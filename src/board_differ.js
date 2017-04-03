@@ -14,7 +14,9 @@ module.exports = function (rawBoardBuffer, rawTargetBuffer) {
       Jimp.read(rawBoardBuffer, (err, boardImg) => {
         if (err) throw err
         let actions = findDifference(boardImg, targetImg)
-        shuffle(actions)
+        if (config.drawMode === 'RANDOM') {
+          shuffle(actions)
+        }
         resolve(actions)
       })
     })
