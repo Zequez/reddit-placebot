@@ -43,7 +43,7 @@ function usersRun (availableUsers) {
         availableUsers.forEach((user) => {
           let action = actions.shift()
           if (action) {
-            promises.push(userPaint(user, action.x, action.y, action.color))
+            promises.push(userPaint(user, action))
           } else {
             console.log('Nothing to do')
             queues.schedule(user, 10)
@@ -56,18 +56,18 @@ function usersRun (availableUsers) {
   })
 }
 
-function userPaint (user, x, y, color) {
+function userPaint (user, action) {
   let cookie = cookies.get(user)
 
-  console.log('Painting ', {x: x, y: y, color: color})
+  console.log('Painting ', action)
 
   let request = {
     method: 'POST',
     url: config.DRAW_URL,
     data: qs.stringify({
-      x: x,
-      y: y,
-      color: color
+      x: action.x,
+      y: action.y,
+      color: action.color
     }),
     headers: {
       cookie: cookie.cookie,

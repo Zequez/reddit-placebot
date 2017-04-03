@@ -2,7 +2,7 @@ const Jimp = require('jimp')
 
 let TRANSPARENT = 0xff00ffff
 
-const colors = [
+const COLORS = [
   [255, 255, 255],
   [228, 228, 228],
   [136, 136, 136],
@@ -21,13 +21,45 @@ const colors = [
   [130, 0, 128]
 ]
 
-const byInt = colors.map((c) => Jimp.rgbaToInt(c[0], c[1], c[2], 255))
+const NAMES = [
+  'white',
+  'lightgray',
+  'darkgray',
+  'black',
+  'lightpink',
+  'red',
+  'orange',
+  'brown',
+  'yellow',
+  'lightgreen',
+  'green',
+  'cyan',
+  'grayblue',
+  'blue',
+  'pink',
+  'purple'
+]
 
-// TODO
+const byInt = COLORS.map((c) => Jimp.rgbaToInt(c[0], c[1], c[2], 255))
+const byRgb = COLORS.map((c) => ({r: c[0], g: c[1], b: c[2]}))
+const byHex = byInt.map((c) => {
+  let str = c.toString(16)
+  let pad = '#00000000'
+  str = pad.substring(0, pad.length - str.length) + str
+  return str.slice(0, 7)
+})
+
+const nearestColor = (function () {
+  let named = {}
+  COLORS.forEach((c, i) => named[NAMES[i]] = byHex[i])
+  return require('nearest-color').from(named)
+})()
+
 function closest (colorInt) {
   let color = Jimp.intToRGBA(colorInt)
-  let c = byInt.indexOf(colorInt)
-  if (c === -1) throw 'No such color...'
+  let nearest = nearestColor(color)
+  c = byInt[byHex.indexOf(nearest.value)]
+  if (c === -1) throw `This should not happen`
   return c
 }
 
@@ -36,16 +68,17 @@ function isTransparent (colorInt) {
   return color.a < 128 || colorInt === TRANSPARENT
 }
 
-function colorCode (color) {
+function toCode (color) {
   return byInt.indexOf(color)
 }
 
 module.exports = {
-  colorCode: colorCode,
+  toCode: toCode,
   closest: closest,
   isTransparent: isTransparent,
-  byHex: colors,
+  byHex: byHex,
   byInt: byInt,
+  byRgb: byInt,
   byName: [
     'white',
     'lightgray',

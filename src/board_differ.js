@@ -4,8 +4,6 @@ const Jimp = require('jimp')
 // Takes the 2 buffers and returns a list of
 // valid colors changes to make
 
-let TRANSPARENT = 0xff00ffff
-
 module.exports = function (rawBoardBuffer, rawTargetBuffer) {
   console.log('Finding actions')
 
@@ -33,8 +31,13 @@ function findDifference (boardImg, targetImg)  {
         let boardPx = boardImg.getPixelColor(x, y)
         let closestPx = colors.closest(targetPx)
         if (boardPx !== closestPx) {
-          let colorCode = colors.colorCode(closestPx)
-          actions.push({ x: x, y: y, color: colorCode })
+          let colorCode = colors.toCode(closestPx)
+          actions.push({
+            x: x,
+            y: y,
+            color: colorCode,
+            name: colors.byName[colorCode]
+          })
         }
       }
     }

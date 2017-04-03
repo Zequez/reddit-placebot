@@ -918,6 +918,10 @@ nan@^2.3.0:
   version "2.5.1"
   resolved "https://registry.yarnpkg.com/nan/-/nan-2.5.1.tgz#d5b01691253326a97a2bbee9e61c55d8d60351e2"
 
+nearest-color:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/nearest-color/-/nearest-color-0.4.0.tgz#dab0b96b80aea91d1e7f6674479b855234effe08"
+
 nested-error-stacks@^1.0.0:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/nested-error-stacks/-/nested-error-stacks-1.0.2.tgz#19f619591519f096769a5ba9a86e6eeec823c3cf"

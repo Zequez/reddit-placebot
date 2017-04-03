@@ -78,7 +78,9 @@ wait until something breaks and fix it.
 
 LOL
 
-You can `npm run watch`, but that's about it.
+My initial intention was to make a simple script, didn't expect it to last, so
+testing manually was feasible. Now I should be writing tests, because it's getting
+tedious, but I don't know how long will /r/place last for.
 
 ## Similar Projects
 
