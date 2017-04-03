@@ -41,22 +41,23 @@ You can use any colors and will try to find the closest match. The available
 board colors are visible in the file /src/colors.js. But it's better if you use
 and eyedropper tool from a board image.
 
-### Target Drawing
+### Target Location
 
 The bot downloads the board each time it's time to draw, so it only changes
 the necessary pixels that don't match the target.
 
 #### Remote (for multiple people)
 
-You can configure the target to be downloaded from a remote image by
-settin on `config.js`:
+You can configure the target to be downloaded from a remote URL:
 
 - `useRemoteTarget: true`
 - `REMOTE_TARGET_URL: "http://example.com/remote_target.png"`
 
-The image will be downloaded before paining and saved to `images/remote_target`.
+The image will be downloaded before painting and saved to `images/remote_target`.
 
 #### Local (just for your own bots)
+
+*images/target.png*
 
 - `useRemoteTarget: false`
 - `LOCAL_TARGET_FILE: __dirname + '/images/target.png'`
