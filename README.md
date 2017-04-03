@@ -86,4 +86,4 @@ Thanks to [trosh/rplace](https://github.com/trosh/rplace) to figure out how to a
 
 ## License
 
-MIT
+The Reddit Placebot is released under the [MIT License](http://www.opensource.org/licenses/MIT).
