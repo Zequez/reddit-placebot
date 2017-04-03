@@ -20,7 +20,13 @@ function auth (user) {
       let cookie = response.headers['set-cookie'].map((c) => c.split(';')[0]).join('; ')
       cookies.set(user, cookie, modhash)
     } else {
-      console.log(response.data.json)
+      let msg = response.data.json.errors[0][0]
+      if (msg === 'INCORRECT_USERNAME_PASSWORD') {
+        console.log('Invalid user name or password for:'.yellow, user, passwd)
+        cookies.set(user, false, false)
+      } else {
+        console.log(response.data.json)
+      }
     }
   })
 }

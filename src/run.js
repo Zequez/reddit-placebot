@@ -20,15 +20,23 @@ const cookies = require('./cookies')
 
 require('./configure')
 
-
-
 startQueue()
 
 function startQueue () {
-  for (let user in users) { if (!queues.isScheduled(user)) queues.schedule(user) }
-  let bundleAccountsNumber = Math.min(Object.keys(users).length, config.bundleAccounts)
-  queues.watch(Object.keys(users), bundleAccountsNumber, (availableUsers) => {
-    return usersRun(availableUsers)
+  authentication.ensureAuth().then(() => {
+    let validUsers = []
+    for (let user in users) {
+      let cookie = cookies.get(user)
+      if (cookie && cookie.cookie !== false) {
+        validUsers.push(user)
+        if (!queues.isScheduled(user)) queues.schedule(user)
+      }
+    }
+
+    let bundleAccountsNumber = Math.min(validUsers.length, config.bundleAccounts)
+    queues.watch(validUsers, bundleAccountsNumber, (availableUsers) => {
+      return usersRun(availableUsers)
+    })
   })
 }
 
