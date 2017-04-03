@@ -2,7 +2,7 @@
 
 > Anything that can be automated should be automated
 
-[*Place has ended*](https://www.reddit.com/r/place/comments/6382bb/place_has_ended/). It was a good run, thanks everyone that supported the project!
+[**Place has ended**](https://www.reddit.com/r/place/comments/6382bb/place_has_ended/). It was a good run, thanks everyone that supported the project!
 
 ---
 
