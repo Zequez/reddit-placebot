@@ -4,8 +4,8 @@
   "description": "A bot that automatically places stuff on Reddit/r/place",
   "main": "index.js",
   "scripts": {
-    "start": "node src/run.js",
-    "watch": "nodemon ./src/run.js -i queues.json -i cookies.json",
+    "start": "node src/run.js --harmony",
+    "watch": "nodemon --harmony ./src/run.js -i queues.json -i cookies.json",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
