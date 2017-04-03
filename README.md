@@ -1,4 +1,4 @@
-# Reddit Place Bot
+# Reddit Placebot
 
 This is a bot I made for the Reddit [/r/place](https://www.reddit.com/r/place/) event of 2017 April Fools Day.
 
