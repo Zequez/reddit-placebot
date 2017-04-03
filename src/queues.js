@@ -43,9 +43,9 @@ function getNext (usersNames) {
   let nextOne = Infinity
   let countdowns = []
   usersNames.forEach((user) => {
-    let secs = (queues[user] - timeNow) / 1000
+    let secs = Math.round((queues[user] - timeNow) / 1000)
     if (secs < nextOne && secs > 0) {
-      nextOne = Math.round(secs)
+      nextOne = secs
     }
     countdowns.push(`${user} ${secs}s`)
   })

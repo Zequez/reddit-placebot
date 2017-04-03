@@ -6,23 +6,31 @@ const config = require('../config')
 const colors = require('./colors')
 
 function load () {
-  return loadFromUrl(config.BOARD_URL)
+  if (config.useExistingBoardCache) {
+    return loadFromFile(config.BOARD_FILE)
+  } else {
+    return loadFromUrl(config.BOARD_URL, config.BOARD_FILE)
+  }
 }
 
-function loadFromUrl (url) {
+function loadFromUrl (url, file) {
   return axios.get(url, {
     responseType: 'arraybuffer'
   }).then(function (response) {
-    return saveAsBmp(response.data)
+    return saveAsBmp(response.data, file)
   })
 }
 
-function loadFromRawFile (file) {
-  let boardBuffer = fs.readFileSync(file)
-  return saveAsBmp(boardBuffer)
+function loadFromFile (file) {
+  return Promise.resolve(fs.readFileSync(file))
 }
 
-function saveAsBmp (buffer) {
+function loadFromRawFile (sourceFile, targetFile) {
+  let boardBuffer = fs.readFileSync(sourceFile)
+  return saveAsBmp(boardBuffer, targetFile)
+}
+
+function saveAsBmp (buffer, targetFile) {
   let img = new Jimp(1000, 1000)
 
   let pixels = []
@@ -46,8 +54,8 @@ function saveAsBmp (buffer) {
   }
 
   return new Promise((resolve) => {
-    img.write(config.BOARD_FILE, function () {
-      resolve(fs.readFileSync(config.BOARD_FILE))
+    img.write(targetFile, function () {
+      resolve(fs.readFileSync(targetFile))
     })
   })
 }

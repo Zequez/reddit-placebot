@@ -38,18 +38,20 @@ function usersRun (availableUsers) {
       boardDownloader.load(),
       targetDownloader.load()
     ]).then((buffers) => {
-      let promises = []
-      let actions = boardDiffer(buffers[0], buffers[1])
-      availableUsers.forEach((user) => {
-        let action = actions.shift()
-        if (action) {
-          promises.push(userPaint(user, action.x, action.y, action.color))
-        } else {
-          console.log('Nothing to do')
-          queues.schedule(user, 30)
-        }
+      return boardDiffer(buffers[0], buffers[1]).then((actions) => {
+        let promises = []
+        availableUsers.forEach((user) => {
+          let action = actions.shift()
+          if (action) {
+            promises.push(userPaint(user, action.x, action.y, action.color))
+          } else {
+            console.log('Nothing to do')
+            queues.schedule(user, 10)
+          }
+        })
+        return Promise.all(promises)
       })
-      return Promise.all(promises)
+
     })
   })
 }
@@ -76,8 +78,7 @@ function userPaint (user, x, y, color) {
 
   if (config.mockPainting) {
     console.log('Mock painting!')
-    console.log(request)
-    queues.schedule(user, 30)
+    queues.schedule(user, 5)
     return Promise.resolve()
   }
 

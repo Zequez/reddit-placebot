@@ -1,5 +1,7 @@
 const Jimp = require('jimp')
 
+let TRANSPARENT = 0xff00ffff
+
 const colors = [
   [255, 255, 255],
   [228, 228, 228],
@@ -19,9 +21,31 @@ const colors = [
   [130, 0, 128]
 ]
 
+const byInt = colors.map((c) => Jimp.rgbaToInt(c[0], c[1], c[2], 255))
+
+// TODO
+function closest (colorInt) {
+  let color = Jimp.intToRGBA(colorInt)
+  let c = byInt.indexOf(colorInt)
+  if (c === -1) throw 'No such color...'
+  return c
+}
+
+function isTransparent (colorInt) {
+  let color = Jimp.intToRGBA(colorInt)
+  return color.a < 128 || colorInt === TRANSPARENT
+}
+
+function colorCode (color) {
+  return byInt.indexOf(color)
+}
+
 module.exports = {
+  colorCode: colorCode,
+  closest: closest,
+  isTransparent: isTransparent,
   byHex: colors,
-  byInt: colors.map((c) => Jimp.rgbaToInt(c[0], c[1], c[2], 255)),
+  byInt: byInt,
   byName: [
     'white',
     'lightgray',
