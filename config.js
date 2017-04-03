@@ -2,7 +2,7 @@ module.exports = {
   BOARD_URL: 'https://www.reddit.com/api/place/board-bitmap',
   BOARD_FILE: __dirname + '/tmp/board.bmp',
 
-  REMOTE_TARGET_URL: 'https://raw.githubusercontent.com/Zequez/reddit-placebot/master/images/target.png',
+  REMOTE_TARGET_URL: 'https://raw.githubusercontent.com/senepa/reddit-placebot/master/images/target.png',
   REMOTE_TARGET_FILE: __dirname + '/tmp/remote_target',
 
   LOCAL_TARGET_FILE: __dirname + '/images/target.png',
@@ -18,8 +18,8 @@ module.exports = {
   bundleAccounts: 10,
 
   // The PLACEBOT mark in the world <3
-  targetStartX: 981,
-  targetStartY: 784,
+  targetStartX: 0,
+  targetStartY: 0,
 
   drawMode: 'RANDOM', // LEFTTOP | RANDOM
 
