@@ -6,13 +6,13 @@
 
 ---
 
-This is a bot I made for the Reddit [/r/place](https://www.reddit.com/r/place/) event of 2017 April Fools Day. I just wanted to make a simple quick script because I expected it to last until April 2nd. It seems the Placebot will be useful for a little more time.
+This is a bot I made for the Reddit [/r/place](https://www.reddit.com/r/place/) event of 2017 April Fools Day. I just wanted to make a simple quick script because I expected it to last until April 2nd. It lasted a total of 72 hours.
 
 Originally made this bot to protect our national flag on [/r/argentina](https://www.reddit.com/r/argentina/). But you can use it
 for your artwork or evil deeds, with your own account, your other 4 throwaways, or
 the 1000 accounts dump you found on Pastebin. The Placebot is impartial and doesn't discriminate.
 
-![Some artwork  from our sub](https://raw.githubusercontent.com/Zequez/reddit-placebot/master/images/board.final.png)
+![The /r/place final board](https://raw.githubusercontent.com/Zequez/reddit-placebot/master/images/board.final.png)
 
 ## Non-tech install
 
