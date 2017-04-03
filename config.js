@@ -1,7 +1,7 @@
 module.exports = {
   BOARD_URL: 'https://www.reddit.com/api/place/board-bitmap',
   BOARD_FILE: __dirname + '/tmp/board.bmp',
-  
+
   REMOTE_TARGET_URL: 'https://raw.githubusercontent.com/Zequez/placebot-argentina-target/master/official_target.png',
   REMOTE_TARGET_FILE: __dirname + '/tmp/remote_target',
 
@@ -15,7 +15,7 @@ module.exports = {
 
   // Wait until these amount of accounts are available
   // and paint pixels at the same time
-  bundleAccounts: 8,
+  bundleAccounts: 10,
 
   // The PLACEBOT mark in the world <3
   targetStartX: 929,

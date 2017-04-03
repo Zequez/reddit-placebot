@@ -7,6 +7,8 @@ const TMPDIR = __dirname + '/../tmp'
 if (!fs.existsSync(TMPDIR)) fs.mkdirSync(TMPDIR)
 
 const config = require('../config')
+
+if (!fs.existsSync(__dirname + '/../users.json')) throw 'You must have a users.json file'
 const users = require('../users')
 
 const boardDownloader = require('./board_downloader')
@@ -16,16 +18,12 @@ const authentication = require('./authentication')
 const queues = require('./queues')
 const cookies = require('./cookies')
 
-// boardDownloader.loadFromRawFile('_bitmap.bmp')
-// boardDownloader.load()
-// return
-
-for (let user in users) { if (!queues.isScheduled(user)) queues.schedule(user) }
 startQueue()
 
-
 function startQueue () {
-  queues.watch(Object.keys(users), config.bundleAccounts, (availableUsers) => {
+  for (let user in users) { if (!queues.isScheduled(user)) queues.schedule(user) }
+  let bundleAccountsNumber = Math.min(Object.keys(users).length, config.bundleAccounts)
+  queues.watch(Object.keys(users), bundleAccountsNumber, (availableUsers) => {
     return usersRun(availableUsers)
   })
 }
