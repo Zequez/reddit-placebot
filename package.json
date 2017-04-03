@@ -7,8 +7,7 @@
     "remote": "node src/run.js --harmony --remote",
     "start": "node src/run.js --harmony",
     "watch": "nodemon --harmony ./src/run.js -i queues.json -i cookies.json",
-    "test": "echo \"Error: no test specified\" && exit 1",
-
+    "test": "mocha",
     "argentinaTarget": "node src/run.js --remote --startX 0 --startY 0 --target https://raw.githubusercontent.com/Zequez/placebot-argentina-target/master/official_target.png"
   },
   "author": "",
@@ -16,6 +15,7 @@
   "dependencies": {
     "axios": "^0.15.3",
     "bluebird": "^3.5.0",
+    "chai": "^3.5.0",
     "colors": "^1.1.2",
     "got": "^6.7.1",
     "jimp": "^0.2.27",
@@ -23,5 +23,9 @@
     "nodemon": "^1.11.0",
     "prettyjson": "^1.2.1",
     "request": "^2.81.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.2.0"
   }
 }
