@@ -2,7 +2,7 @@ module.exports = {
   BOARD_URL: 'https://www.reddit.com/api/place/board-bitmap',
   BOARD_FILE: __dirname + '/tmp/board.bmp',
 
-  REMOTE_TARGET_URL: 'https://raw.githubusercontent.com/Zequez/placebot-argentina-target/master/official_target.png',
+  REMOTE_TARGET_URL: 'https://raw.githubusercontent.com/Zequez/reddit-placebot/master/images/target.png',
   REMOTE_TARGET_FILE: __dirname + '/tmp/remote_target',
 
   LOCAL_TARGET_FILE: __dirname + '/images/target.png',

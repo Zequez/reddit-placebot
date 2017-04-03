@@ -16,12 +16,31 @@ cd reddit-placebot
 npm install
 ```
 
-## Configuration
-
 ### Users
 
 Change `users.example.json` to `users.json` and add your username and password
 of your account and all your throwaways.
+
+## Usage
+
+Any command line options will override the options on `config.json`:
+
+```
+  npm run start
+  npm run start --remote --target <REMOTE_TARGET_URL>
+  npm run start --target <LOCAL_TARGET_FILE>
+  npm run start --target <LOCAL_TARGET_FILE> --startX <targetStartX> --startY <targetStartY>
+```
+
+### Target Oficial Argentino
+
+Este comando es nosotros _boludo_:
+
+`npm run start --argentinaTarget`
+
+This uses the file at: https://raw.githubusercontent.com/Zequez/placebot-argentina-target/master/official_target.png
+
+## Configuration
 
 ### The Target Image File
 
@@ -74,15 +93,6 @@ changes all at the same time, change the config:
 - `drawMode: <mode> (default = 'RANDOM')`
   - `'TOPLEFT'`: Will draw from top to bottom and left to right
   - `'RANDOM'`: Will draw at random points
-
-## Usage
-
-```
-  npm run start
-```
-
-It'll keep keep drawing forever and if it can't draw anymore it's gonna
-wait until something breaks it and fix it.
 
 ## Testing
 

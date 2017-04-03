@@ -4,9 +4,12 @@
   "description": "A bot that automatically places stuff on Reddit/r/place",
   "main": "index.js",
   "scripts": {
+    "remote": "node src/run.js --harmony --remote",
     "start": "node src/run.js --harmony",
     "watch": "nodemon --harmony ./src/run.js -i queues.json -i cookies.json",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+
+    "argentinaTarget": "node src/run.js --remote --startX 0 --startY 0 --target https://raw.githubusercontent.com/Zequez/placebot-argentina-target/master/official_target.png"
   },
   "author": "",
   "license": "MIT",
