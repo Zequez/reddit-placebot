@@ -12,7 +12,7 @@ Originally made this bot to protect our national flag on [/r/argentina](https://
 for your artwork or evil deeds, with your own account, your other 4 throwaways, or
 the 1000 accounts dump you found on Pastebin. The Placebot is impartial and doesn't discriminate.
 
-![Some artwork  from our sub](https://raw.githubusercontent.com/Zequez/reddit-placebot/master/images/preview.png)
+![Some artwork  from our sub](https://raw.githubusercontent.com/Zequez/reddit-placebot/master/images/board.final.png)
 
 ## Non-tech install
 
